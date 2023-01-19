@@ -6,9 +6,10 @@ var product_urls = require("../data/productUrls.json");
 
 function get_mock_response(url, method, data) {
   if (url === "/recreate/search") {
+    console.log("Fetch search results for category", data.category);
     var response = {
       data: {
-        results: product_urls.filter((category) =>  data.category == category),
+        results: product_urls.filter((item) => data.category == item.category),
       },
       status: 200,
     };

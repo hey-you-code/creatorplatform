@@ -11,10 +11,12 @@ export const injectStore = _store => {
 }
 // Create an axiosApiInstance.
 const axios = require('axios');
-export const axiosApiInstance = axios.create();
+export const axiosApiInstance = null;
+// axios.create();
 
 async function make_axios_call(method, url, data, headers) {
     if (ISMOCK) {
+        console.log("call mock api:", url, method, data);
         const api_response = await api_mock(url, method, data);
         return [api_response, true];
     }

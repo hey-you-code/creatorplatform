@@ -17,7 +17,6 @@ function SearchModal({
   updateContext,
 }) {
   const dispatch = useDispatch();
-  const imageUrlList = useSelector(imageUrls);
   const [searchQuery, setSearchQuery] = useState(null);
 
   //   console.log(
@@ -109,7 +108,7 @@ function SearchModal({
         </button>
       </div>
 
-      {imageUrl?.map((item, index) => (
+      {results?.map((item, index) => (
         <div key={index} className="flex justify-center items-center space-x-4">
           <input
             type="radio"
@@ -119,9 +118,12 @@ function SearchModal({
             className="h-6 w-6 text-green-500"
           />
           <img src={item?.url} alt="" className="h-[80px] rounded-xl" />
-          <h2 className="text-xl" onClick={() => {}}>
+          <h2 className="text-xl" onClick={() => { }}>
             {item?.url.slice(0, 50) + `...`}
           </h2>
+          <h6>
+            {item?.price}
+          </h6>
         </div>
       ))}
 

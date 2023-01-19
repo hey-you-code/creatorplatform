@@ -11,15 +11,16 @@ const searchSlice = createSlice({
     product_url: "",
   },
   reducers: {
-    updateContextStarted: (state, action) => {},
+    updateContextStarted: (state, action) => { },
     updateContextSuccess: (state, action) => {
       let response = action.payload.server_response.data;
       state.category = action.payload.data.category;
       state.search_query = action.payload.data.search_query;
       state.color = action.payload.data.color;
+      console.log("Server results returned:", action.payload.server_response.data.results);
       state.results = action.payload.server_response.data.results;
     },
-    updateContextFailed: (state, action) => {},
+    updateContextFailed: (state, action) => { },
   },
 });
 
@@ -33,11 +34,12 @@ export default searchSlice.reducer;
 
 export const updateContext =
   (category, search_query, color) => (dispatch, getState) => {
+    console.log("updateContext called");
     return dispatch(
       apiCallBegan({
         url: "/recreate/search",
         method: "post",
-        date_to_server: {
+        data_to_server: {
           category: category,
           search_query: search_query,
           color: color,
@@ -49,7 +51,7 @@ export const updateContext =
         },
         onStart: updateContextStarted.type,
         onSuccess: updateContextSuccess.type,
-        onFailed: updateContextFailed,
+        onFailed: updateContextFailed.type,
       })
     );
   };
