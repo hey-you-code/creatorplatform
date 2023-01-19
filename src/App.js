@@ -1,20 +1,24 @@
-import ColorPicker from "./components/ColorPicker";
-import PhotoGallery from "./components/PhotoGallery";
-import UploadPhotos from "./components/UploadPhotos";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import NavBar from "./components/NavBar";
 import HomePage from "./Pages/HomePage";
+import OutfitBoard from "./Pages/OutfitBoard";
 import PhotoPage from "./Pages/PhotoPage";
+import RecreateLook from "./Pages/RecreateLook";
+import SearchPage from "./Pages/SearchPage";
 
 function App() {
   return (
-    <div className="bg-white overflow-hidden h-screen w-screen">
-      <div className="flex justify-center p-4 sticky bg-black">
-        <div className="text-white font-bold text-lg">Creator Platform</div>
+    <div className="bg-white overflow-hidden  h-screen w-screen">
+      <div className="flex justify-center  sticky  flex">
+        <NavBar />
       </div>
 
       <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/pickcolor/:id" element={<PhotoPage />} />
+        <Route exact path="/" element={<HomePage />} />
+        <Route path="/finalPage" element={<PhotoPage />} />
+        <Route path="/recreate" element={<RecreateLook />} />
+        <Route path="/search" element={<SearchPage />} />
+        <Route path="/outfit" element={<OutfitBoard />} />
       </Routes>
     </div>
   );

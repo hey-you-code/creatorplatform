@@ -2,7 +2,7 @@ import React, { useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import uuid from "react-uuid";
 import {
-    finalizedFile,
+  finalizedFile,
   selectedFile,
   setFinalFile,
   setSelectedFile,
@@ -10,6 +10,7 @@ import {
 } from "../store/pictureSlice";
 import CloseIcon from "@mui/icons-material/Close";
 import CancelIcon from "@mui/icons-material/Cancel";
+import { setImagerecreate } from "../store/recreateSilce";
 
 function UploadSection({ modalRef }) {
   const filePickerRef = useRef();
@@ -42,7 +43,12 @@ function UploadSection({ modalRef }) {
 
   const handleSubmit = (e) => {
     modalRef.current.close();
-    dispatch(setFinalFile([...finalFiles, ...selectFiles]));
+    if(window.location.pathname == "/") {
+      dispatch(setFinalFile([...finalFiles, ...selectFiles]));
+    } else if(window.location.pathname == "/recreate") {
+      dispatch(setImagerecreate(...selectFiles))
+    }
+    
     dispatch(updateFile([]));
   };
 
@@ -95,7 +101,7 @@ function UploadSection({ modalRef }) {
             className="inline-block px-6 py-4 bg-black text-white font-medium text-sm leading-tight uppercase rounded-full shadow-md hover:bg-black hover:shadow-lg focus:bg-black focus:shadow-lg focus:outline-none focus:ring-0 active:bg-black active:shadow-lg transition duration-150 ease-in-out "
             onClick={handleSubmit}
           >
-            Finalize Selection
+            Done
           </button>
         </div>
       ) : (

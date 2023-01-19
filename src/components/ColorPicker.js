@@ -1,11 +1,14 @@
 import React, { useEffect, useRef, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { matchPath, useMatch, useMatches, useParams } from "react-router-dom";
 import { finalizedFile, setFinalColor } from "../store/pictureSlice";
+import { image_to_recreate, setColor } from "../store/recreateSilce";
 
-function ColorPicker({ modalRef }) {
-  const { id } = useParams();
+function ColorPicker({ modalRef, id, pickcolorRef }) {
+  // const match = useMatches();
+  // console.log(match);
   const finalFiles = useSelector(finalizedFile);
+  const images = useSelector(image_to_recreate);
   const dispatch = useDispatch();
   const canvas = useRef(null);
   const color = useRef(null);
@@ -46,7 +49,13 @@ function ColorPicker({ modalRef }) {
       // canvas.current.width=600;
       // canvas.current.height=400;
       const img = new Image();
-      img.src = finalFiles?.filter((items) => items.id === id)[0]?.url;
+      if (window.location.pathname == "/recreate") {
+        img.src = images?.url;
+        console.log("image src:", img.src);
+      } else {
+        img.src = finalFiles?.filter((items) => items.id === id)[0]?.url;
+      }
+
       const ctx = canvas.current.getContext("2d");
       //   ctx.fillStyle = "black";
       //   ctx.fillRect(0, 0, 400, 256 + 80);
@@ -176,11 +185,21 @@ function ColorPicker({ modalRef }) {
           <div
             className="mt-4 text-xl font-semibold bg-blue-500 flex justify-center p-1.5 rounded-full hover:opacity-90 text-white cursor-pointer "
             onClick={() => {
-              modalRef.current.close();
-              dispatch(setFinalColor(selectedColor));
+              if (window.location.pathname == "/recreate") {
+                pickcolorRef.current.close();
+                dispatch(setColor(selectedColor));
+              }
+              if (window.location.pathname == `/pickcolor/${id}`) {
+                modalRef.current.close();
+                dispatch(setFinalColor(selectedColor));
+              }
+              // if (match && matchPath === "/pickcolor/:id") {
+              //   modalRef.current.close();
+              //   dispatch(setFinalColor(selectedColor));
+              // }
             }}
           >
-            Finalize Color
+            Done
           </div>
         </div>
       </div>

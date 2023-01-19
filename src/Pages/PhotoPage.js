@@ -1,55 +1,42 @@
-import React, { useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { useSelector } from "react-redux";
-import { useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import ColorPicker from "../components/ColorPicker";
 import Modal from "../components/Modal";
 import { finalColor, finalizedFile } from "../store/pictureSlice";
+import productData from "../store/data/products.json";
+
+import { dataToBackend, imageUrls } from "../store/recreateSilce";
+import Tabs from "../components/Tabs";
 
 function PhotoPage() {
   const { id } = useParams();
+  const navigate = useNavigate();
   const modalRef = useRef();
   const finalFiles = useSelector(finalizedFile);
   const finalColors = useSelector(finalColor);
+  const [val, setVal] = useState(0);
+  const images = useSelector(imageUrls);
+  const dataFromBackend = useSelector(dataToBackend);
+
+  const handleSubmit = () => {
+    if (!finalColors) return;
+    navigate(`/search?colorPatch=${finalColors}`);
+  };
+
+  useEffect(() => {
+    console.log(productData);
+    console.log(images);
+    console.log(dataFromBackend);
+  }, []);
+
+  const handleChange = (e, val) => {
+    setVal(val);
+  };
+
   return (
-    <div className="h-screen w-screen p-4 m-4 ">
-      <div className=" mb-4">
-        <img
-          src={finalFiles?.filter((items) => items.id === id)[0].url}
-          className="h-[400px] w-[400px] object-contain bg-gray-400 rounded-xl"
-        />
-      </div>
-      <button
-        className="font-bold text-xl bg-black hover:opacity-80 text-white p-2 rounded-full"
-        onClick={() => modalRef.current.open()}
-      >
-        Pick Color
-      </button>
-      <Modal ref={modalRef}>
-        <ColorPicker modalRef={modalRef} />
-      </Modal>
-      {finalColors ? (
-        <div className="flex space-x-2 items-center mt-4">
-          <div
-            style={{
-              backgroundColor: `${finalColors}`,
-              // color: `${selectedColor}`,
-            }}
-            className="w-8 h-8 rounded-md "
-          ></div>
-          <h1
-            style={
-              {
-                // color: `${finalColors}`
-              }
-            }
-            className="text-xl font-bold "
-          >
-            {finalColors}
-          </h1>
-        </div>
-      ) : (
-        <></>
-      )}
+    <div className=" flex justify-center">
+      <Tabs />
     </div>
   );
 }

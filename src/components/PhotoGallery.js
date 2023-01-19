@@ -14,7 +14,7 @@ function PhotoGallery() {
           <div key={index} className="w-full relative object-cover">
             <img
               src={item.url}
-              className="h-[200px] w-[200px] cursor-pointer hover:opacity-80 object-contain bg-gray-200 rounded-xl"
+              className="h-[200px] w-[200px] cursor-pointer hover:opacity-80 object-contain shadow-xl rounded-xl"
               onClick={() => {
                 navigate(`/pickcolor/${item.id}`);
               }}
