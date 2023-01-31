@@ -7,7 +7,7 @@ const recreateLookSlice = createSlice({
     outfitboard: {},
   },
   reducers: {
-    fetchBoardStarted: (state, action) => {},
+    fetchBoardStarted: (state, action) => { },
     fetchBoardSuccess: (state, action) => {
       state.outfitboard = action.payload.server_response.data.objectCopy;
       console.log(
@@ -15,20 +15,19 @@ const recreateLookSlice = createSlice({
         action.payload.server_response.data.objectCopy
       );
     },
-    fetchBoardFailed: (state, action) => {},
-  },
+    fetchBoardFailed: (state, action) => { },
+    updateBoard: (state, action) => {
+      // var outfitBoard = JSON.parse(JSON.stringify(state.outfitboard));
+      // state.outfitboard[0].products.tops[0].search_query = "HEY WAASSuP";
+      // outfitBoard[0].unique_name = "Bishal";
+      console.log(state.outfitBoard);
+      // state.outfitBoard[0] = action.payload;
+    },
 
-  updateBoard: (state, action) => {
-    // var outfitBoard = JSON.parse(JSON.stringify(state.outfitboard));
-    // state.outfitboard[0].products.tops[0].search_query = "HEY WAASSuP";
-    // outfitBoard[0].unique_name = "Bishal";
-    console.log(state.outfitBoard);
-    // state.outfitBoard[0] = action.payload;
+    updateSearchAndUrl: (state, action) => { },
+    updateSearchAndUrlSuccess: (state, action) => { },
+    updateSearchAndUrlFailed: (state, action) => { },
   },
-
-  updateSearchAndUrl: (state, action) => {},
-  updateSearchAndUrlSuccess: (state, action) => {},
-  updateSearchAndUrlFailed: (state, action) => {},
 });
 
 export const {
