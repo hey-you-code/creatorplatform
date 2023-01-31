@@ -23,8 +23,9 @@ const recreateLookSlice = createSlice({
       console.log(state.outfitBoard);
       // state.outfitBoard[0] = action.payload;
     },
-
-    updateSearchAndUrl: (state, action) => { },
+    updateSearchAndUrl: (state, action) => {
+      state.outfitboard = action.payload.outfit_board;
+    },
     updateSearchAndUrlSuccess: (state, action) => { },
     updateSearchAndUrlFailed: (state, action) => { },
   },
@@ -67,11 +68,11 @@ export const update_board =
     outfit_board_category[0].url[0] = product_url;
     outfit_board_category[0].search_query = search_query;
 
-    console.log("updated_board", outfitBoard);
+    console.log("updated_board", outfit_board_category);
 
     return dispatch({
       type: updateSearchAndUrl.type,
-      payload: { category_outfit_board: outfit_board_category },
+      payload: { outfit_board: outfitBoard },
     });
   };
 
