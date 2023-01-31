@@ -1,7 +1,7 @@
 [
     {
         "brand": "ONLY",
-        "category": "Top",
+        "category": "Tops",
         "product_url": "https://assets.myntassets.com/q_90/v1/assets/images/15706194/2022/9/27/fa17cfc0-8922-46b9-8321-469cd587059c1664272901794ONLYWomenBlackPinkStripedSweater1.jpg",
         "Title": "Flower Tops",
         "Price": "Rs. 400",
@@ -15,7 +15,7 @@
     },
     {
         "brand": "ONE",
-        "category": "Bottom",
+        "category": "Bottoms",
         "product_url": "https://m.media-amazon.com/images/I/71o0o7xx7RL._AC._SR360,460.jpg",
         "Title": "Tappered Pants",
         "Price": "Rs. 500",

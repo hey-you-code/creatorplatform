@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import UploadPhotos from "../components/UploadPhotos";
 // import productData from "../components/products.json";
 import {
@@ -21,23 +21,24 @@ import Search from "../components/Search";
 import { useNavigate } from "react-router-dom";
 // import { CategoriesData } from "../components/CategoriesData";
 import productData from "../store/data/products.json";
+import { fetch_board_with_id, update_board } from "../store/recreateLookSlice";
 
-function RecreateLook() {
+function RecreateLook({ fetch_board_with_id, outfitboard, update_board }) {
   const navigate = useNavigate();
   const images = useSelector(image_to_recreate);
   const selectedCategory = useSelector(selectedCategories);
   const categoriesSelected = useSelector(searchedCategories);
   const imageUrl = useSelector(imageUrls);
-  const dataForBackend = useSelector(dataToBackend)
-  const dispatch = useDispatch();
+  const dataForBackend = useSelector(dataToBackend);
+  // const dispatch = useDispatch();
   console.log(images);
   const modalRef = useRef();
   const pickcolorRef = useRef();
   const searchRef = useRef();
   const [clickedCategory, setClickedCategory] = useState(null);
   const CategoriesData = [
-    "Top",
-    "Bottom",
+    "Tops",
+    "Bottoms",
     "Outerwear",
     "Dresses",
     "Bag",
@@ -46,6 +47,12 @@ function RecreateLook() {
   ];
 
   const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    fetch_board_with_id();
+  }, []);
+
+  console.log("outfitboard", outfitboard);
 
   // const [dataToBackend, setDataToBackened] = useState([]);
 
@@ -89,7 +96,10 @@ function RecreateLook() {
       <div className="flex">
         <div>
           <button
-            onClick={() => modalRef.current.open()}
+            onClick={() => {
+              modalRef.current.open();
+              // fetch_board_with_id();
+            }}
             className="text-blue-500 font-semibold text-xl shadow-md rounded-full p-2 hover:opacity-80"
           >
             {!images ? "Upload Photo" : "Update Photo"}
@@ -120,14 +130,13 @@ function RecreateLook() {
                     key={index}
                     className={
                       selectedCategory?.includes(item)
-                        ? 
-                          "rounded-full p-1  flex items-center justify-center font-semibold cursor-pointer hover:opacity-80 shadow-xl bg-green-500 text-white"
+                        ? "rounded-full p-1  flex items-center justify-center font-semibold cursor-pointer hover:opacity-80 shadow-xl bg-green-500 text-white"
                         : "rounded-full p-1  flex items-center justify-center font-semibold cursor-pointer hover:opacity-80 shadow-xl"
                     }
                     onClick={() => {
                       setClickedCategory(item);
                       searchRef.current.open();
-    
+                      // update_board(item.toLowerCase());
                     }}
                   >
                     {item}
@@ -164,4 +173,14 @@ function RecreateLook() {
   );
 }
 
-export default RecreateLook;
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
+  outfitboard: state.recreateLook.outfitboard,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetch_board_with_id: () => dispatch(fetch_board_with_id()),
+  update_board: (category) => dispatch(update_board(category)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecreateLook);

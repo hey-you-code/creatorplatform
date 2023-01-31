@@ -1,5 +1,5 @@
 import React, { useRef, useState } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { connect, useDispatch, useSelector } from "react-redux";
 import {
   color,
   imageUrls,
@@ -8,6 +8,7 @@ import {
   setSelectedCategories,
   updateImageUrls,
 } from "../store/recreateSilce";
+import { sendInfo, updateResults } from "../store/searchSlice";
 import ColorPicker from "./ColorPicker";
 import Modal from "./Modal";
 import SearchModal from "./SearchModal";
@@ -19,6 +20,8 @@ function Search({
   setClickedCategory,
   searchRef,
   setProducts,
+  sendInfo,
+  dataForBackend,
 }) {
   const dispatch = useDispatch();
   const imageUrl = useSelector(imageUrls);
@@ -112,6 +115,7 @@ function Search({
                   )
                 );
               }
+              dispatch(updateResults());
               searchModalRef.current.open();
             }}
           >
@@ -133,6 +137,8 @@ function Search({
         <button
           onClick={() => {
             dispatch(setSelectedCategories(clickedCategory));
+            // sendInfo();
+            console.log("data",dataForBackend);
             searchRef.current.close();
           }}
           className="bg-blue-500 px-4 py-2 text-white text-xl font-semibold "
@@ -144,4 +150,13 @@ function Search({
   );
 }
 
-export default Search;
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
+  dataForBackend: state.search.dataForBackend,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  // sendInfo: () => dispatch(sendInfo()),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Search);

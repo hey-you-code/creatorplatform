@@ -1,6 +1,6 @@
 export const CategoriesData = [
-  "Top",
-  "Bottom",
+  "Tops",
+  "Bottoms",
   "Outerwear",
   "Dresses",
   "Bag",

@@ -1,11 +1,16 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
+import {
+  fetch_board_with_id,
+  updateBoard,
+  update_board,
+} from "../store/recreateLookSlice";
 import {
   imageUrls,
   sendDataToBackend,
   setImageUrls,
 } from "../store/recreateSilce";
-import { updateContext } from "../store/searchSlice";
+import { sendInfo, setProduct_url, updateContext } from "../store/searchSlice";
 import { ImageUrls } from "./ImageUrls";
 
 function SearchModal({
@@ -15,6 +20,10 @@ function SearchModal({
   setSearchInput,
   results,
   updateContext,
+  product_url,
+  sendInfo,
+  fetch_board_with_id,
+  update_board,
 }) {
   const dispatch = useDispatch();
   const [searchQuery, setSearchQuery] = useState(null);
@@ -33,45 +42,32 @@ function SearchModal({
   const handleSearch = () => {
     setImageUrl(ImageUrls.filter((item) => item.category === clickedCategory));
     console.log(searchQuery);
+
     updateContext(clickedCategory, searchQuery, pickedColor);
+    // fetch_board_with_id();
+    dispatch(updateBoard());
   };
 
   console.log("results", results);
+
+  // useEffect(() => {
+  //   fetch_board_with_id();
+  // }, []);
 
   const handleDone = () => {
     // if (
     //   imageUrlList.filter((item) => item.category === clickedCategory).length ==
     //   0
     // ) {
-    dispatch(
-      setImageUrls({
-        searchContext: {
-          category: clickedCategory,
-          color: pickedColor,
-          query: searchQuery,
-          // price: imageUrl[0]?.price,
-          id: imageUrl[0]?.id,
-        },
-        response: {
-          url: url,
-          primary_image: url,
-          title: "",
-          price: "",
-          brand: "",
-        },
-      })
-    );
-    dispatch(
-      sendDataToBackend({
-        category: clickedCategory,
-        url: url,
-      })
-    );
+    dispatch(setProduct_url(url));
+    // dispatch(updateBoard(url));
     setSearchInput(url);
+    sendInfo(clickedCategory, searchQuery, pickedColor, url);
     searchModalRef.current.close();
+    update_board(clickedCategory.toLowerCase(), url, searchQuery);
   };
 
-  console.log("urls:", imageUrl);
+  console.log("urls:", product_url);
   return (
     <div
       className=" w-full p-4 space-y-8"
@@ -118,12 +114,10 @@ function SearchModal({
             className="h-6 w-6 text-green-500"
           />
           <img src={item?.url} alt="" className="h-[80px] rounded-xl" />
-          <h2 className="text-xl" onClick={() => { }}>
+          <h2 className="text-xl" onClick={() => {}}>
             {item?.url.slice(0, 50) + `...`}
           </h2>
-          <h6>
-            {item?.price}
-          </h6>
+          <h6>{item?.price}</h6>
         </div>
       ))}
 
@@ -151,11 +145,17 @@ function SearchModal({
 const mapStateToProps = (state, ownProps) => ({
   ...ownProps,
   results: state.search.results,
+  product_url: state.search.product_url,
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateContext: (category, search_query, color) =>
     dispatch(updateContext(category, search_query, color)),
+  sendInfo: (category, search_query, color, product_url) =>
+    dispatch(sendInfo(category, search_query, color, product_url)),
+  fetch_board_with_id: () => dispatch(fetch_board_with_id()),
+  update_board: (search_query, category, product_url) =>
+    dispatch(update_board(search_query, category, product_url)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchModal);

@@ -1,0 +1,88 @@
+[{
+    "unique_name": "aesthetic_board_outfits_jan16_1_16_01_2023_sakshi",
+    "creator_name": "sakshi",
+    "context": {
+        "topic": "aesthetic",
+        "image_url": "",
+        "comment": "Soft Girl"
+    },
+    "products": {
+        "tops": [
+            {
+                "url": [
+                    "https://www.ajio.com/na-kd-smoked-front-knot-crop-top/p/469215167_white"
+                ],
+                "search_query": "",
+                "metadata": {}
+            }
+        ],
+        "bottoms": [
+            {
+                "url": [
+                    "https://www.myntra.com/bottomwear/berrylush/berrylush---pink-checked-uniform-dressing-skirt/19684324/buy"
+                ],
+                "search_query": "",
+                "metadata": {}
+            }
+        ],
+        "outerwear": [
+            {
+                "url": [
+                    "https://www.myntra.com/topwear/defacto/defacto-women-off-white-self-desgin-cardigan/15820800/buy"
+                ],
+                "search_query": "",
+                "metadata": {}
+            }
+        ],
+        "dresses": [],
+        "bag": [],
+        "footwear": [
+            {
+                "url": [
+                    "https://www.myntra.com/shoes/shoetopia/shoetopia-women-white-sneakers/20642484/buy"
+                ],
+                "search_query": "",
+                "metadata": {}
+            }
+        ],
+        "accessories": [
+            {
+                "url": [
+                    "https://www.myntra.com/socks/el-regalo/el-regalo-girls-white-self-design-knee-length-cotton-socks/20104002/buy"
+                ],
+                "search_query": "",
+                "metadata": {}
+            },
+            {
+                "url": [
+                    "https://jokerandwitch.com/products/daisy-bloom-white-beaded-necklace"
+                ],
+                "search_query": "",
+                "metadata": {}
+            },
+            {
+                "url": [
+                    "https://share.urbanic.com/81997/3/3/app"
+                ],
+                "search_query": "",
+                "metadata": {}
+            }
+        ]
+    },
+    "media": {
+        "board_image": [
+            "https://zive-club-web-content.s3.ap-south-1.amazonaws.com/outfit_boards/sakshi_boards_week2/13.png"
+        ],
+        "canva_link": "https://www.canva.com/design/DAFYe_k40_Q/jbN3iR0e3t9LF3iEUFJiig/edit",
+        "board_video": ""
+    },
+    "creation_date": "16/01/2023",
+    "update_date": "",
+    "hashtags": [
+        "#aesthetic_soft_girl"
+    ],
+    "metatdata": {
+        "name_in_sheet": "aesthetic_board_outfits_jan16",
+        "look_index": "1"
+    }
+}]

@@ -1,0 +1,91 @@
+[{
+    "unique_name": "",
+    "creator_name": "",
+    "context": {
+        "topic": "",
+        "image_url": "",
+        "comment": ""
+    },
+    "products": {
+        "tops": [
+            {
+                "url": [
+                    ""
+                ],
+                "search_query": "",
+                "color": "",
+                "metadata": {}
+            }
+        ],
+        "bottoms": [
+            {
+                "url": [
+                    ""
+                ],
+                "search_query": "",
+                "color": "",
+                "metadata": {}
+            }
+        ],
+        "outerwear": [
+            {
+                "url": [
+                    ""
+                ],
+                "color": "",
+                "search_query": "",
+                "metadata": {}
+            }
+        ],
+        "dresses": [],
+        "bag": [],
+        "footwear": [
+            {
+                "url": [
+                    "https://www.myntra.com/shoes/shoetopia/shoetopia-women-white-sneakers/20642484/buy"
+                ],
+                "search_query": "",
+                "metadata": {}
+            }
+        ],
+        "accessories": [
+            {
+                "url": [
+                    "https://www.myntra.com/socks/el-regalo/el-regalo-girls-white-self-design-knee-length-cotton-socks/20104002/buy"
+                ],
+                "search_query": "",
+                "metadata": {}
+            },
+            {
+                "url": [
+                    "https://jokerandwitch.com/products/daisy-bloom-white-beaded-necklace"
+                ],
+                "search_query": "",
+                "metadata": {}
+            },
+            {
+                "url": [
+                    "https://share.urbanic.com/81997/3/3/app"
+                ],
+                "search_query": "",
+                "metadata": {}
+            }
+        ]
+    },
+    "media": {
+        "board_image": [
+            "https://zive-club-web-content.s3.ap-south-1.amazonaws.com/outfit_boards/sakshi_boards_week2/13.png"
+        ],
+        "canva_link": "https://www.canva.com/design/DAFYe_k40_Q/jbN3iR0e3t9LF3iEUFJiig/edit",
+        "board_video": ""
+    },
+    "creation_date": "16/01/2023",
+    "update_date": "",
+    "hashtags": [
+        "#aesthetic_soft_girl"
+    ],
+    "metatdata": {
+        "name_in_sheet": "aesthetic_board_outfits_jan16",
+        "look_index": "1"
+    }
+}]
