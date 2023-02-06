@@ -12,7 +12,7 @@ const searchSlice = createSlice({
     dataForBackend: [],
   },
   reducers: {
-    updateContextStarted: (state, action) => {},
+    updateContextStarted: (state, action) => { },
     updateContextSuccess: (state, action) => {
       let response = action.payload.server_response.data;
       state.category = action.payload.data.category;
@@ -24,14 +24,14 @@ const searchSlice = createSlice({
       );
       state.results = action.payload.server_response.data.results;
     },
-    updateContextFailed: (state, action) => {},
+    updateContextFailed: (state, action) => { },
     setProduct_url: (state, action) => {
       state.product_url = action.payload;
     },
     updateResults: (state, action) => {
       state.results = [];
     },
-    sendInfoStarted: (state, action) => {},
+    sendInfoStarted: (state, action) => { },
     sendInfoSuccess: (state, action) => {
       state.category = action.payload.data.category;
       state.search_query = action.payload.data.search_query;
@@ -46,7 +46,7 @@ const searchSlice = createSlice({
         action.payload.server_response.data,
       ];
     },
-    sendInfoFailed: (state, action) => {},
+    sendInfoFailed: (state, action) => { },
   },
 });
 

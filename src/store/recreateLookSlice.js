@@ -18,7 +18,11 @@ const recreateLookSlice = createSlice({
         action.payload.server_response.data.objectCopy
       );
     },
+
     fetchBoardFailed: (state, action) => {},
+
+    fetchBoardFailed: (state, action) => {},
+
     updateBoard: (state, action) => {
       // var outfitBoard = JSON.parse(JSON.stringify(state.outfitboard));
       // state.outfitboard[0].products.tops[0].search_query = "HEY WAASSuP";
@@ -41,6 +45,12 @@ const recreateLookSlice = createSlice({
     sendOutfitBoard: (state, action) => {
       state.outfitboard = action.payload["outfit_board"];
     },
+
+    updateSearchAndUrl: (state, action) => {
+      state.outfitboard = action.payload.outfit_board;
+    },
+    updateSearchAndUrlSuccess: (state, action) => {},
+    updateSearchAndUrlFailed: (state, action) => {},
   },
 });
 
@@ -90,7 +100,6 @@ export const update_board =
       payload: { outfit_board: outfitBoard },
     });
   };
-
 export const send_outfit_board =
   (category, title, price, brand, primaryImage) => (dispatch, getState) => {
     var outfit_board = getState().recreateLook.outfitboard;
@@ -110,16 +119,3 @@ export const send_outfit_board =
       payload: { outfit_board: outfitBoard },
     });
   };
-
-//   Stuck to make the below function
-
-// export const update_search_And_Url = (category, search_query, product_url) => (dispatch, getState) => {
-//   var outfit_board = getState().recreateLook.outfitboard;
-//   var outfitBoard = JSON.parse(JSON.stringify(outfit_board));
-
-//   if (
-//     outfitBoard[0]?.products[category] == Action.payload.category_outfit_board
-//   ) {
-
-//   }
-// };
