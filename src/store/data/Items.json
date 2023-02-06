@@ -10,61 +10,91 @@
         "tops": [
             {
                 "url": [
-                    "https://www.ajio.com/na-kd-smoked-front-knot-crop-top/p/469215167_white"
+                    
                 ],
                 "search_query": "",
+                "color": "",
+                "title": "",
+                "price": "",
+                "brand": "",
                 "metadata": {}
             }
         ],
         "bottoms": [
             {
                 "url": [
-                    "https://www.myntra.com/bottomwear/berrylush/berrylush---pink-checked-uniform-dressing-skirt/19684324/buy"
+                    
                 ],
                 "search_query": "",
+                "color": "",
+                "title": "",
+                "price": "",
+                "brand": "",
                 "metadata": {}
             }
         ],
         "outerwear": [
             {
                 "url": [
-                    "https://www.myntra.com/topwear/defacto/defacto-women-off-white-self-desgin-cardigan/15820800/buy"
+                    
                 ],
                 "search_query": "",
+                "color": "",
+                "title": "",
+                "price": "",
+                "brand": "",
                 "metadata": {}
             }
         ],
-        "dresses": [],
-        "bag": [],
+        "dresses": [
+            {
+                "url": [
+                    
+                ],
+                "search_query": "",
+                "color": "",
+                "title": "",
+                "price": "",
+                "brand": "",
+                "metadata": {}
+            }
+        ],
+        "bag": [
+            {
+                "url": [
+                    
+                ],
+                "search_query": "",
+                "color": "",
+                "title": "",
+                "price": "",
+                "brand": "",
+                "metadata": {}
+            }
+        ],
         "footwear": [
             {
                 "url": [
-                    "https://www.myntra.com/shoes/shoetopia/shoetopia-women-white-sneakers/20642484/buy"
+                    
                 ],
                 "search_query": "",
+                "color": "",
+                "title": "",
+                "price": "",
+                "brand": "",
                 "metadata": {}
             }
         ],
         "accessories": [
             {
                 "url": [
-                    "https://www.myntra.com/socks/el-regalo/el-regalo-girls-white-self-design-knee-length-cotton-socks/20104002/buy"
+                    
                 ],
                 "search_query": "",
-                "metadata": {}
-            },
-            {
-                "url": [
-                    "https://jokerandwitch.com/products/daisy-bloom-white-beaded-necklace"
-                ],
-                "search_query": "",
-                "metadata": {}
-            },
-            {
-                "url": [
-                    "https://share.urbanic.com/81997/3/3/app"
-                ],
-                "search_query": "",
+                "color": "",
+                "title": "",
+                "price": "",
+                "brand": "",
                 "metadata": {}
             }
         ]

@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { connect, useDispatch, useSelector } from "react-redux";
+import { sendData } from "../store/recreateLookSlice";
 import {
   color,
   imageUrls,
@@ -7,6 +8,7 @@ import {
   setSearchedCategories,
   setSelectedCategories,
   updateImageUrls,
+  setColor,
 } from "../store/recreateSilce";
 import { sendInfo, updateResults } from "../store/searchSlice";
 import ColorPicker from "./ColorPicker";
@@ -137,8 +139,15 @@ function Search({
         <button
           onClick={() => {
             dispatch(setSelectedCategories(clickedCategory));
+            dispatch(
+              sendData({
+                category: clickedCategory.toLowerCase(),
+                url: searchInput,
+              })
+            );
             // sendInfo();
-            console.log("data",dataForBackend);
+            console.log("data", dataForBackend);
+            dispatch(setColor(null));
             searchRef.current.close();
           }}
           className="bg-blue-500 px-4 py-2 text-white text-xl font-semibold "

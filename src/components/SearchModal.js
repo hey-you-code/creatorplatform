@@ -3,6 +3,7 @@ import { connect, useDispatch, useSelector } from "react-redux";
 import {
   fetch_board_with_id,
   updateBoard,
+  updateSearchAndUrl,
   update_board,
 } from "../store/recreateLookSlice";
 import {
@@ -45,7 +46,7 @@ function SearchModal({
 
     updateContext(clickedCategory, searchQuery, pickedColor);
     // fetch_board_with_id();
-    dispatch(updateBoard());
+    // dispatch(updateBoard());
   };
 
   console.log("results", results);
@@ -64,7 +65,8 @@ function SearchModal({
     setSearchInput(url);
     sendInfo(clickedCategory, searchQuery, pickedColor, url);
     searchModalRef.current.close();
-    update_board(clickedCategory.toLowerCase(), url, searchQuery);
+    update_board(clickedCategory.toLowerCase(), url, searchQuery, pickedColor);
+    dispatch(updateSearchAndUrl());
   };
 
   console.log("urls:", product_url);
@@ -154,8 +156,8 @@ const mapDispatchToProps = (dispatch) => ({
   sendInfo: (category, search_query, color, product_url) =>
     dispatch(sendInfo(category, search_query, color, product_url)),
   fetch_board_with_id: () => dispatch(fetch_board_with_id()),
-  update_board: (search_query, category, product_url) =>
-    dispatch(update_board(search_query, category, product_url)),
+  update_board: (category, product_url, search_query, color) =>
+    dispatch(update_board(category, product_url, search_query, color)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(SearchModal);

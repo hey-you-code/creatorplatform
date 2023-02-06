@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import productData from "../store/data/products.json";
 
 function TabContents({
-  content,
+  // content,
   clickedTab,
   title,
   price,
@@ -19,21 +19,21 @@ function TabContents({
   const [newtitle, setNewTitle] = useState(null);
   const [newprice, setNewPrice] = useState(null);
   const [newbrand, setNewBrand] = useState(null);
-  useEffect(() => {
-    console.log(
-      productData?.filter((item) => item.product_url == content[0].response.url)
-    );
+  // useEffect(() => {
+  //   console.log(
+  //     productData?.filter((item) => item.product_url == content[0].response.url)
+  //   );
 
-    const productDetails = productData?.filter(
-      (item) => item.product_url == content[0].response.url
-    );
+  //   const productDetails = productData?.filter(
+  //     (item) => item.product_url == content[0].response.url
+  //   );
 
-    setTitle(productDetails[0]?.Title);
-    setPrice(productDetails[0]?.Price);
-    setBrand(productDetails[0]?.brand);
-    setImageList(productDetails[0]?.Image_List);
-    setPrimaryImage(productDetails[0]?.product_url);
-  }, []);
+  //   setTitle(productDetails[0]?.Title);
+  //   setPrice(productDetails[0]?.Price);
+  //   setBrand(productDetails[0]?.brand);
+  //   setImageList(productDetails[0]?.Image_List);
+  //   setPrimaryImage(productDetails[0]?.product_url);
+  // }, []);
 
   const handleClick = () => {
     // setNewTitle(title);

@@ -52,7 +52,7 @@ const Modal = forwardRef((props, ref) => {
                 delay: 0.3,
               },
             }}
-            className="bg-white fixed w-3/4 h-3/4 inset-0 m-auto rounded-2xl   z-20"
+            className="bg-white fixed w-3/4 h-3/4 inset-0 m-auto rounded-2xl z-20"
           >
             <motion.div
               initial={{

@@ -9,6 +9,6 @@ export const NavBarData = [
   },
   {
     title: "Outfit",
-    link: "/outfit"
-  }
+    link: "/outfit",
+  },
 ];

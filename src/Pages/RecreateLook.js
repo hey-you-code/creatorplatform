@@ -21,20 +21,32 @@ import Search from "../components/Search";
 import { useNavigate } from "react-router-dom";
 // import { CategoriesData } from "../components/CategoriesData";
 import productData from "../store/data/products.json";
-import { fetch_board_with_id, update_board } from "../store/recreateLookSlice";
+import {
+  fetch_board_with_id,
+  sendData,
+  update_board,
+  clearData,
+} from "../store/recreateLookSlice";
 
-function RecreateLook({ fetch_board_with_id, outfitboard, update_board }) {
+function RecreateLook({
+  fetch_board_with_id,
+  outfitboard,
+  update_board,
+  data,
+  setDone,
+}) {
   const navigate = useNavigate();
   const images = useSelector(image_to_recreate);
   const selectedCategory = useSelector(selectedCategories);
   const categoriesSelected = useSelector(searchedCategories);
   const imageUrl = useSelector(imageUrls);
   const dataForBackend = useSelector(dataToBackend);
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   console.log(images);
   const modalRef = useRef();
   const pickcolorRef = useRef();
   const searchRef = useRef();
+
   const [clickedCategory, setClickedCategory] = useState(null);
   const CategoriesData = [
     "Tops",
@@ -49,45 +61,29 @@ function RecreateLook({ fetch_board_with_id, outfitboard, update_board }) {
   const [products, setProducts] = useState([]);
 
   useEffect(() => {
-    fetch_board_with_id();
+    fetch_board_with_id("aesthetic_board_outfits_jan16_1_16_01_2023_sakshi");
   }, []);
 
   console.log("outfitboard", outfitboard);
-
-  // const [dataToBackend, setDataToBackened] = useState([]);
-
-  //   const [selectedChips, setSelectedChips] = useState([]);
-
-  //   useEffect(() => {
-  //     dispatch(setSelectedCategories([...selectedChips]));
-  //   }, [selectedChips]);
-
-  //   console.log(selectedCategory);
-  // console.log(categoriesSelected);
-  // categoriesSelected?.map((val) => console.log(val?.part));
-  // console.log(products);
   const handleClick = () => {
-    // const data = {
-    //   context: {
-    //     image: images?.url.slice(0, 100) + "...",
-    //     Title: "LET'S MAKE A SEXY OUTFIT",
-    //   },
-    //   Products: imageUrl,
-    // };
-    // const jsonData = JSON.stringify(data);
-    // console.log(jsonData);
-
-    // imageUrl.map((item) => {
-    //   console.log(item.response.url);
-    //   console.log(item.searchContext.category);
-    // });
-
-    // imageUrl.map((item) => {
-
-    // });
-
+    // for (var product in outfitboard[0]?.products) {
+    //   var category = outfitboard[0]?.products[product];
+    //   if (
+    //     category[0]?.url.length !== 0
+    //     //  &&
+    //     // data.map(
+    //     //   (item) => item.url == category[0]?.url[0] && item.category == product
+    //     // ).length == 0
+    //   ) {
+    //     // console.log({ category: product, url: category[0]?.url[0] });
+    //     dispatch(sendData({ category: product, url: category[0]?.url[0] }));
+    //   }
+    // }
+    console.log("data send", data);
+    // setDone(true);
     navigate("/finalPage");
   };
+  console.log("data send", data);
 
   console.log(dataForBackend);
 
@@ -129,12 +125,24 @@ function RecreateLook({ fetch_board_with_id, outfitboard, update_board }) {
                   <div
                     key={index}
                     className={
-                      selectedCategory?.includes(item)
-                        ? "rounded-full p-1  flex items-center justify-center font-semibold cursor-pointer hover:opacity-80 shadow-xl bg-green-500 text-white"
+                      data?.filter((val) => val.category === item.toLowerCase())
+                        .length !== 0
+                        ? // selectedCategory?.includes(item)
+                          "rounded-full p-1  flex items-center justify-center font-semibold cursor-pointer hover:opacity-80 shadow-xl bg-green-500 text-white"
                         : "rounded-full p-1  flex items-center justify-center font-semibold cursor-pointer hover:opacity-80 shadow-xl"
                     }
                     onClick={() => {
                       setClickedCategory(item);
+                      // if (data.length !== 0) {
+                      // dispatch(
+                      //   clearData(
+                      //     data?.filter(
+                      //       (val) => val.category !== item.toLowerCase()
+                      //     )
+                      //   )
+                      // );
+                      dispatch(clearData(item.toLowerCase()));
+                      // }
                       searchRef.current.open();
                       // update_board(item.toLowerCase());
                     }}
@@ -176,10 +184,11 @@ function RecreateLook({ fetch_board_with_id, outfitboard, update_board }) {
 const mapStateToProps = (state, ownProps) => ({
   ...ownProps,
   outfitboard: state.recreateLook.outfitboard,
+  data: state.recreateLook.data,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetch_board_with_id: () => dispatch(fetch_board_with_id()),
+  fetch_board_with_id: (id) => dispatch(fetch_board_with_id(id)),
   update_board: (category) => dispatch(update_board(category)),
 });
 

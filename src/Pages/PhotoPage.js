@@ -9,7 +9,7 @@ import productData from "../store/data/products.json";
 import { dataToBackend, imageUrls } from "../store/recreateSilce";
 import Tabs from "../components/Tabs";
 
-function PhotoPage() {
+function PhotoPage({ setDone }) {
   const { id } = useParams();
   const navigate = useNavigate();
   const modalRef = useRef();
@@ -36,7 +36,10 @@ function PhotoPage() {
 
   return (
     <div className=" flex justify-center">
-      <Tabs />
+      <Tabs setDone={setDone} />
+      <button className="text-2xl border-[1px] border-black/10 absolute bottom-10 p-2  bg-blue-500 rounded-xl text-white text-semibold ">
+        Submit Data
+      </button>
     </div>
   );
 }

@@ -1,21 +1,20 @@
 [
     {
         "brand": "ONLY",
-        "category": "Tops",
-        "product_url": "https://assets.myntassets.com/q_90/v1/assets/images/15706194/2022/9/27/fa17cfc0-8922-46b9-8321-469cd587059c1664272901794ONLYWomenBlackPinkStripedSweater1.jpg",
+        "category": "tops",
+        "product_url": "https://rukminim1.flixcart.com/image/832/832/k44hksw0/top/6/a/h/xs-ksltops1123-kassually-original-imafn2sfsdfrbkbj.jpeg?q=70",
         "Title": "Flower Tops",
         "Price": "Rs. 400",
         "Image_List": [
             "https://assets.myntassets.com/q_90/v1/assets/images/15706194/2022/9/27/fa17cfc0-8922-46b9-8321-469cd587059c1664272901794ONLYWomenBlackPinkStripedSweater1.jpg",
             "https://assets.myntassets.com/q_90/v1/assets/images/15706194/2022/9/27/023c303a-78aa-4c31-ac3c-ce3ec895b0191664272901804ONLYWomenBlackPinkStripedSweater2.jpg",
             "https://assets.myntassets.com/q_90/v1/assets/images/15706194/2022/9/27/c590be40-c3cd-4fb0-8212-2dc7af45696f1664272901813ONLYWomenBlackPinkStripedSweater3.jpg",
-            "https://assets.myntassets.com/q_90/v1/assets/images/15706194/2022/9/27/fa17cfc0-8922-46b9-8321-469cd587059c1664272901794ONLYWomenBlackPinkStripedSweater1.jpg",
-            "https://rukminim1.flixcart.com/image/832/832/k44hksw0/top/6/a/h/xs-ksltops1123-kassually-original-imafn2sfsdfrbkbj.jpeg?q=70"
+            "https://assets.myntassets.com/q_90/v1/assets/images/15706194/2022/9/27/fa17cfc0-8922-46b9-8321-469cd587059c1664272901794ONLYWomenBlackPinkStripedSweater1.jpg"
         ]
     },
     {
         "brand": "ONE",
-        "category": "Bottoms",
+        "category": "bottoms",
         "product_url": "https://m.media-amazon.com/images/I/71o0o7xx7RL._AC._SR360,460.jpg",
         "Title": "Tappered Pants",
         "Price": "Rs. 500",
@@ -23,7 +22,7 @@
     },
     {
         "brand": "",
-        "category": "Outerwear",
+        "category": "outerwear",
         "product_url": "https://cdn.shopify.com/s/files/1/0275/9249/1119/products/PalaLeather-Black-Vegetable-Tanned-Goatskin-Leather-Trench-Coat-1.jpg",
         "Title": "",
         "Price": "",

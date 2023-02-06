@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Box from "@mui/material/Box";
 import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
@@ -6,11 +6,15 @@ import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 import { CategoriesData } from "./CategoriesData";
 import intrestingData from "../store/data/IntrestingItemsData.json";
+import { connect } from "react-redux";
+import { fetch_board_with_id, update_board } from "../store/recreateLookSlice";
+import { useNavigate } from "react-router-dom";
 
-function IntrestingItems() {
+function IntrestingItems({ outfitboard, update_board, fetch_board_with_id }) {
   const [category, setCategory] = useState("");
   const [image, setImage] = useState([]);
   const [selectedImage, setSelectedImage] = useState(null);
+  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setCategory(event.target.value);
@@ -21,6 +25,12 @@ function IntrestingItems() {
   };
 
   console.log(image);
+
+  // useEffect(() => {
+  //   fetch_board_with_id("aesthetic_board_outfits_jan16_1_16_01_2023_sakshi");
+  // }, []);
+
+  console.log(outfitboard);
 
   return (
     <div className="p-4 space-y-4 flex justify-center max-w-7xl h-screen w-screen mx-auto">
@@ -50,13 +60,28 @@ function IntrestingItems() {
           >
             Fetch Intresting
           </button>
+
           {selectedImage ? (
-            <button
-              className="font-semibold px-5 py-2 text-xl border-[1px] border-black/10 mt-[50px] hover:bg-black hover:text-white "
-              onClick={() => console.log("selected Image", selectedImage)}
-            >
-              Done
-            </button>
+            <div className="flex-col space-y-4">
+              <button
+                className="font-semibold px-5 py-2 text-xl border-[1px] border-black/10 mt-[50px] hover:bg-black hover:text-white "
+                onClick={() => {
+                  console.log("selected Image", selectedImage);
+                  update_board(category.toLowerCase(), selectedImage, "", "");
+                }}
+              >
+                Done
+              </button>
+              <div></div>
+              <button
+                className="font-semibold px-5 py-2 text-xl border-[1px] border-black/10 mt-[50px] hover:bg-black hover:text-white "
+                onClick={() => {
+                  navigate("/finalPage");
+                }}
+              >
+                Submit
+              </button>
+            </div>
           ) : (
             <></>
           )}
@@ -90,4 +115,16 @@ function IntrestingItems() {
   );
 }
 
-export default IntrestingItems;
+const mapStateToProps = (state, ownProps) => ({
+  ...ownProps,
+  outfitboard: state.recreateLook.outfitboard,
+  data: state.recreateLook.data,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetch_board_with_id: (id) => dispatch(fetch_board_with_id(id)),
+  update_board: (category, product_url, search_query, color) =>
+    dispatch(update_board(category, product_url, search_query, color)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(IntrestingItems);
